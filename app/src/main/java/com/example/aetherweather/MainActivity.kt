@@ -3,6 +3,7 @@ package com.example.aetherweather
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.os.Bundle
@@ -14,7 +15,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.lottie.LottieDrawable
@@ -34,7 +37,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Locale
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,9 +45,11 @@ class MainActivity : AppCompatActivity() {
 
     private var isCelsius = true
     private var latestWeather: WeatherResponse? = null
-
-    // Prevent restarting the same animation unnecessarily
     private var currentAnimationFile: String? = null
+
+    private val preferences by lazy {
+        getSharedPreferences("AETHER_SETTINGS", MODE_PRIVATE)
+    }
 
     private val locationPermissionLauncher =
         registerForActivityResult(
@@ -69,10 +73,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        // Install Android Splash Screen
         installSplashScreen()
 
+        applySavedTheme()
+
         super.onCreate(savedInstanceState)
+
+        isCelsius = preferences.getBoolean("is_celsius", true)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -81,8 +88,37 @@ class MainActivity : AppCompatActivity() {
             LocationServices.getFusedLocationProviderClient(this)
 
         setupRecyclerViews()
+        setupClickListeners()
 
         binding.tvLocation.text = "Dhaka, Bangladesh"
+
+        loadWeather(
+            23.8103,
+            90.4125,
+            "Dhaka, Bangladesh"
+        )
+    }
+
+    private fun applySavedTheme() {
+
+        val themeMode = preferences.getString("theme_mode", "dark")
+
+        val nightMode = when (themeMode) {
+            "dark" -> AppCompatDelegate.MODE_NIGHT_YES
+            "light" -> AppCompatDelegate.MODE_NIGHT_NO
+            else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+        }
+
+        AppCompatDelegate.setDefaultNightMode(nightMode)
+    }
+
+    private fun setupClickListeners() {
+
+        binding.tvSettings.setOnClickListener {
+            startActivity(
+                Intent(this, SettingsActivity::class.java)
+            )
+        }
 
         binding.tvLocation.setOnClickListener {
             checkLocationPermission()
@@ -131,16 +167,31 @@ class MainActivity : AppCompatActivity() {
 
             isCelsius = !isCelsius
 
+            preferences.edit()
+                .putBoolean("is_celsius", isCelsius)
+                .apply()
+
             latestWeather?.let { weather ->
                 showWeather(weather)
             }
         }
+    }
 
-        loadWeather(
-            23.8103,
-            90.4125,
-            "Dhaka, Bangladesh"
-        )
+    override fun onResume() {
+        super.onResume()
+
+        if (!::binding.isInitialized) return
+
+        val savedUnit = preferences.getBoolean("is_celsius", true)
+
+        if (savedUnit != isCelsius) {
+
+            isCelsius = savedUnit
+
+            latestWeather?.let { weather ->
+                showWeather(weather)
+            }
+        }
     }
 
     // Setup RecyclerViews
@@ -368,10 +419,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // ==============================
     // AIR QUALITY API
-    // ==============================
-
     private fun loadAirQuality(
         latitude: Double,
         longitude: Double
@@ -509,9 +557,7 @@ class MainActivity : AppCompatActivity() {
         } ?: "--"
     }
 
-    // ==============================
     // WEATHER FUNCTIONS
-    // ==============================
 
     private fun convertTemperature(celsius: Double): Double {
 
@@ -534,7 +580,6 @@ class MainActivity : AppCompatActivity() {
             current.isDay
         )
 
-        // NEW: Update Lottie Animation
         updateWeatherAnimation(
             current.weatherCode,
             current.isDay
@@ -591,10 +636,7 @@ class MainActivity : AppCompatActivity() {
         showDailyForecast(data)
     }
 
-    // ==============================
-    // NEW: LOTTIE WEATHER ANIMATION
-    // ==============================
-
+    // LOTTIE WEATHER ANIMATION
     private fun updateWeatherAnimation(
         weatherCode: Int,
         isDay: Int
@@ -602,34 +644,27 @@ class MainActivity : AppCompatActivity() {
 
         val animationFile = when {
 
-            // Thunderstorm
             weatherCode in 95..99 ->
                 "thunderstorm.json"
 
-            // Snow
             weatherCode in 71..77 ||
                     weatherCode in 85..86 ->
                 "snow.json"
 
-            // Rain and Drizzle
             weatherCode in 51..67 ||
                     weatherCode in 80..82 ->
                 "rainy.json"
 
-            // Clear Day
             weatherCode == 0 && isDay == 1 ->
                 "sunny.json"
 
-            // Partly Cloudy
             weatherCode == 1 || weatherCode == 2 ->
                 "partly_cloudy.json"
 
-            // Cloudy, Fog or Clear Night
             else ->
                 "cloudy.json"
         }
 
-        // Do not restart if the animation is already playing
         if (currentAnimationFile == animationFile) {
             return
         }
@@ -637,7 +672,6 @@ class MainActivity : AppCompatActivity() {
         currentAnimationFile = animationFile
 
         binding.lottieWeather.cancelAnimation()
-
         binding.lottieWeather.setAnimation(animationFile)
 
         binding.lottieWeather.repeatCount =

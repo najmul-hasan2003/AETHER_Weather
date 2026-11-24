@@ -17,6 +17,14 @@
         android:theme="@style/Theme.AETHERWeather">
 
         <activity
+            android:name=".PrivacyPolicyActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AETHERWeather.Splash"

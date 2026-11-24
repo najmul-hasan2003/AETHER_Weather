@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Basic Colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- AETHER Dark Theme -->
+    <color name="dark_background">#101B35</color>
+    <color name="dark_card">#252F4D</color>
+    <color name="dark_card_start">#34466D</color>
+    <color name="dark_card_end">#1D2945</color>
+    <color name="dark_text_primary">#FFFFFF</color>
+    <color name="dark_text_secondary">#C5D0ED</color>
+
+    <!-- AETHER Light Theme -->
+    <color name="light_background">#F2F6FF</color>
+    <color name="light_card">#FFFFFF</color>
+    <color name="light_card_start">#FFFFFF</color>
+    <color name="light_card_end">#E4ECFA</color>
+    <color name="light_text_primary">#172746</color>
+    <color name="light_text_secondary">#627493</color>
+
+    <!-- Dynamic Theme Colors -->
+    <color name="app_background">#F2F6FF</color>
+    <color name="app_screen_start">#DCE9FF</color>
+    <color name="app_screen_center">#EDF3FF</color>
+    <color name="app_screen_end">#F2F6FF</color>
+    <color name="app_card">#FFFFFF</color>
+    <color name="app_card_start">#FFFFFF</color>
+    <color name="app_card_end">#E4ECFA</color>
+    <color name="app_text_primary">#172746</color>
+    <color name="app_text_secondary">#627493</color>
+
+    <!-- Sunny Weather: Light Theme -->
+    <color name="app_sunny_start">#8CCBFF</color>
+    <color name="app_sunny_center">#BDE4FF</color>
+    <color name="app_sunny_end">#EAF6FF</color>
+
+    <!-- Cloudy Weather: Light Theme -->
+    <color name="app_cloudy_start">#B8C8DA</color>
+    <color name="app_cloudy_center">#D5E0EC</color>
+    <color name="app_cloudy_end">#EDF2F8</color>
+
+    <!-- Rainy Weather: Light Theme -->
+    <color name="app_rainy_start">#A7BED8</color>
+    <color name="app_rainy_center">#C5D6E8</color>
+    <color name="app_rainy_end">#E5EDF6</color>
+
+    <!-- Night Weather: Light Theme -->
+    <color name="app_night_start">#A9BCE0</color>
+    <color name="app_night_center">#C9D7ED</color>
+    <color name="app_night_end">#EAF0FA</color>
+
 </resources>

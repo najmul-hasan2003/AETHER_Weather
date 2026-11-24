@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="58dp"
     android:layout_marginBottom="8dp"
-    android:background="@drawable/bg_card_gradient"
+    android:background="@drawable/bg_card"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:paddingStart="16dp"
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Monday"
-        android:textColor="#FFFFFF"
+        android:textColor="?attr/colorOnSurface"
         android:textSize="14sp"
         android:textStyle="bold"
         android:fontFamily="sans-serif-medium"/>
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:gravity="end"
         android:text="22°"
-        android:textColor="#B9C8E5"
+        android:textColor="?attr/colorOnSurfaceVariant"
         android:textSize="14sp"
         android:fontFamily="sans-serif"/>
 
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:gravity="end"
         android:text="31°"
-        android:textColor="#FFFFFF"
+        android:textColor="?attr/colorOnSurface"
         android:textSize="15sp"
         android:textStyle="bold"
         android:fontFamily="sans-serif-medium"/>

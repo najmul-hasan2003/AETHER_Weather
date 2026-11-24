@@ -52,4 +52,6 @@ dependencies {
     implementation("com.airbnb.android:lottie:6.7.1")
     // Splash Screen
     implementation("androidx.core:core-splashscreen:1.0.1")
+    // Unit Testing
+    testImplementation("junit:junit:4.13.2")
 }

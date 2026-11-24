@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Sun -->
+    <path
+        android:fillColor="#FFC83D"
+        android:pathData="M54,13 A17,17 0,1 0,54.1,13 Z"/>
+
+    <!-- Sun rays -->
+    <path
+        android:fillColor="#FFC83D"
+        android:pathData="M52,3 L56,3 L56,12 L52,12 Z
+        M52,30 L56,30 L56,39 L52,39 Z
+        M30,20 L34,17 L40,25 L36,28 Z
+        M68,28 L74,20 L78,23 L72,31 Z"/>
+
+    <!-- Cloud -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M28,67 C20,67 15,61 15,54
+        C15,46 21,40 29,40
+        C32,27 44,23 54,29
+        C60,32 63,38 63,43
+        C74,39 87,47 87,59
+        C87,68 80,74 71,74
+        L29,74 C29,74 28,74 28,67 Z"/>
+
+    <!-- Blue cloud accent -->
+    <path
+        android:fillColor="#28A8FF"
+        android:pathData="M22,68 C31,73 45,75 58,75
+        L72,75 C61,81 44,83 30,79
+        C24,77 20,73 22,68 Z"/>
+</vector>

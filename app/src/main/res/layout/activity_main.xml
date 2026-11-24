@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- App Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="AETHER"
+                android:textColor="#FFFFFF"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.15"/>
+
+            <TextView
+                android:id="@+id/tvRefresh"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:gravity="center"
+                android:text="↻"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp"
+                android:background="@drawable/bg_card_gradient"/>
+        </LinearLayout>
+
+        <!-- Search -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/bg_card_gradient"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="15dp">
+
+            <EditText
+                android:id="@+id/etCity"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="Search your city..."
+                android:singleLine="true"
+                android:inputType="textCapWords"
+                android:imeOptions="actionSearch"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#AAB5D0"/>
+
+            <TextView
+                android:id="@+id/tvSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SEARCH"
+                android:textColor="#AAB5FF"
+                android:textStyle="bold"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <!-- Location -->
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:gravity="center"
+            android:text="DHAKA, BANGLADESH"
+            android:textColor="#C5D0ED"
+            android:textSize="14sp"
+            android:letterSpacing="0.1"/>
+
+        <!-- Weather Animation -->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieWeather"
+            android:layout_width="190dp"
+            android:layout_height="170dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitCenter"/>
+
+        <!-- Old Weather Icon -->
+        <TextView
+            android:id="@+id/tvIcon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:gravity="center"
+            android:text="☀️"
+            android:textSize="85sp"/>
+
+        <!-- Temperature -->
+        <TextView
+            android:id="@+id/tvTemp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="32°"
+            android:textColor="#FFFFFF"
+            android:textSize="76sp"
+            android:fontFamily="sans-serif-light"/>
+
+        <!-- Temperature Unit Toggle -->
+        <TextView
+            android:id="@+id/tvUnitToggle"
+            android:layout_width="76dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_card_gradient"
+            android:gravity="center"
+            android:text="°C  |  °F"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Change temperature unit"/>
+
+        <TextView
+            android:id="@+id/tvCondition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Sunny"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/tvFeels"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Feels like 35°"
+            android:textColor="#AAB5D0"
+            android:textSize="14sp"/>
+
+        <!-- Weather Details Heading -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="4dp"
+            android:text="WEATHER DETAILS"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.12"/>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_marginTop="12dp">
+
+            <include
+                android:id="@+id/cardHumidity"
+                layout="@layout/item_metric"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"/>
+
+            <include
+                android:id="@+id/cardWind"
+                layout="@layout/item_metric"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"/>
+
+            <include
+                android:id="@+id/cardRain"
+                layout="@layout/item_metric"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"/>
+
+            <include
+                android:id="@+id/cardUv"
+                layout="@layout/item_metric"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"/>
+
+        </GridLayout>
+
+        <!-- Sunrise & Sunset Heading -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
+            android:text="SUNRISE &amp; SUNSET"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.12"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/bg_card_gradient">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🌅 Sunrise"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tvSunrise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="--:--"
+                    android:textColor="#FFFFFF"
+                    android:textSize="23sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/bg_card_gradient">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🌇 Sunset"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tvSunset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="--:--"
+                    android:textColor="#FFFFFF"
+                    android:textSize="23sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Air Quality Heading -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="12dp"
+            android:text="AIR QUALITY"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.12"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- US AQI -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:background="@drawable/bg_card_gradient">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="US AQI"
+                    android:textColor="#AAB5D0"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/tvUsAqi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="--"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvUsAqiLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Loading..."
+                    android:textColor="#AAB5D0"
+                    android:textSize="11sp"/>
+            </LinearLayout>
+
+            <!-- European AQI -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:background="@drawable/bg_card_gradient">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EUROPEAN AQI"
+                    android:textColor="#AAB5D0"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/tvEuropeanAqi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="--"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvEuropeanAqiLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Loading..."
+                    android:textColor="#AAB5D0"
+                    android:textSize="11sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Pollutants Heading -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="10dp"
+            android:text="AIR POLLUTANTS"
+            android:textColor="#C5D0ED"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.12"/>
+
+        <!-- PM2.5 and PM10 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/cardPm25"
+                layout="@layout/item_metric"
+                android:layout_width="0dp"
+                android:layout_height="95dp"
+                android:layout_weight="1"/>
+
+            <include
+                android:id="@+id/cardPm10"
+                layout="@layout/item_metric"
+                android:layout_width="0dp"
+                android:layout_height="95dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <!-- CO and NO2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/cardCo"
+                layout="@layout/item_metric"
+                android:layout_width="0dp"
+                android:layout_height="95dp"
+                android:layout_weight="1"/>
+
+            <include
+                android:id="@+id/cardNo2"
+                layout="@layout/item_metric"
+                android:layout_width="0dp"
+                android:layout_height="95dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <!-- SO2 and O3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/cardSo2"
+                layout="@layout/item_metric"
+                android:layout_width="0dp"
+                android:layout_height="95dp"
+                android:layout_weight="1"/>
+
+            <include
+                android:id="@+id/cardO3"
+                layout="@layout/item_metric"
+                android:layout_width="0dp"
+                android:layout_height="95dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <!-- Hourly Forecast Heading -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="4dp"
+            android:text="HOURLY FORECAST"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.12"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHourly"
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:layout_marginTop="12dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"/>
+
+        <!-- Weekly Forecast Heading -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="4dp"
+            android:text="7 DAYS FORECAST"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.12"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDaily"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:nestedScrollingEnabled="false"/>
+
+        <!-- Status -->
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:gravity="center"
+            android:text="Weather data by Open-Meteo"
+            android:textColor="#8997B8"
+            android:textSize="11sp"/>
+
+    </LinearLayout>
+</ScrollView>

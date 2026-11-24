@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="58dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_card_gradient"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
+
+    <TextView
+        android:id="@+id/tvDay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Monday"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"/>
+
+    <TextView
+        android:id="@+id/tvDayIcon"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="☀️"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/tvMin"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="22°"
+        android:textColor="#B9C8E5"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif"/>
+
+    <TextView
+        android:id="@+id/tvMax"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="31°"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"/>
+
+</LinearLayout>

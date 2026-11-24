@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Basic Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- AETHER Dark Theme -->
+    <color name="dark_background">#101B35</color>
+    <color name="dark_card">#252F4D</color>
+    <color name="dark_card_start">#34466D</color>
+    <color name="dark_card_end">#1D2945</color>
+    <color name="dark_text_primary">#FFFFFF</color>
+    <color name="dark_text_secondary">#C5D0ED</color>
+
+    <!-- Dynamic Theme Colors -->
+    <color name="app_background">#101B35</color>
+    <color name="app_screen_start">#253B70</color>
+    <color name="app_screen_center">#172746</color>
+    <color name="app_screen_end">#0B1225</color>
+    <color name="app_card">#252F4D</color>
+    <color name="app_card_start">#34466D</color>
+    <color name="app_card_end">#1D2945</color>
+    <color name="app_text_primary">#FFFFFF</color>
+    <color name="app_text_secondary">#C5D0ED</color>
+
+    <!-- Sunny Weather: Dark Theme -->
+    <color name="app_sunny_start">#2478B8</color>
+    <color name="app_sunny_center">#185A91</color>
+    <color name="app_sunny_end">#102D52</color>
+
+    <!-- Cloudy Weather: Dark Theme -->
+    <color name="app_cloudy_start">#66758B</color>
+    <color name="app_cloudy_center">#394B65</color>
+    <color name="app_cloudy_end">#17283F</color>
+
+    <!-- Rainy Weather: Dark Theme -->
+    <color name="app_rainy_start">#344B65</color>
+    <color name="app_rainy_center">#24364D</color>
+    <color name="app_rainy_end">#101B2D</color>
+
+    <!-- Night Weather: Dark Theme -->
+    <color name="app_night_start">#182B50</color>
+    <color name="app_night_center">#101D38</color>
+    <color name="app_night_end">#080F20</color>
+
+</resources>
